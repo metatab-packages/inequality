@@ -130,3 +130,4 @@ dmypy.json
 
 *.pickle
 .DS_Store
+Notebooks/regression_set.csv

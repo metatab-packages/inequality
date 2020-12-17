@@ -1,9 +1,9 @@
-# template-collection
+# Inequality Collection
 
-A template repo for creating new collections of [Metapack](http://metatab.org) data packages.
 
-*Don't fork this repo*. Instead, use the green "Use this Template" button in Github. 
+## References
 
+The Debt, randal
 
 ## Managing the Collection
 
