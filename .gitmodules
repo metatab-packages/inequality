@@ -4,3 +4,12 @@
 [submodule "federalreserve.gov-consumer_finances-2016-inherit"]
 	path = federalreserve.gov-consumer_finances-2016-inherit
 	url = https://github.com/metatab-packages/federalreserve.gov-consumer_finances-2016-inherit.git
+[submodule "census.gov-sipp"]
+	path = census.gov-sipp
+	url = https://github.com/metatab-packages/census.gov-sipp.git
+[submodule "census.gov-sipp-inequality"]
+	path = census.gov-sipp-inequality
+	url = https://github.com/metatab-packages/census.gov-sipp-inequality.git
+[submodule "bls.org-cex_pumd-ref"]
+	path = bls.org-cex_pumd-ref
+	url = https://github.com/metatab-packages/bls.org-cex_pumd-ref.git
