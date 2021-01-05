@@ -9,32 +9,6 @@ def remove_version(name):
     
     return re.sub(p, '', name)
 
-def multi_open(name, base_url='http://library.metatab.org/', print_ref=False):
-    from metapack.exc import MetatabFileNotFound
-    from rowgenerators.exceptions import AppUrlError
-
-    r = None
-    
-    refs = [
-        name, 
-        'index:'+name,
-        'index:'+remove_version(name),
-        base_url+name+'.csv',
-        base_url+remove_version(name)+'.csv',     
-    ]
-    
-    
-    for ref in refs:
-    
-        try:
-            r =  mp.open_package(ref)
-            if print_ref:
-                print("Opening: ", ref)
-            return r
-        except (MetatabFileNotFound,AppUrlError):
-           pass
-    
-    return None
 
 def make_cpi(pkg):
     # Convert CPI to be referenced to current dollars

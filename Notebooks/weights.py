@@ -3,22 +3,42 @@ import pandas as pd
 from  pathlib import  Path
 from pandas._libs.lib import is_integer
 
-import weightedstats as ws 
-import wquantiles as wq
+
+
+def wquantile(s, w, q):
+    """Fast weighted median"""
+    
+    # Simple weighted quantiles
+
+    # Sort by increasing target value
+    idx = np.argsort(s)
+    
+    # Compute the cumulative sum of the weights, then divide by the sum of the weights to 
+    # get a cumulative proportion (0,1)
+    tptotinc_q = w.iloc[idx].cumsum()/w.sum()
+
+    # Now a quantile value is the smallest value in the set of rows that have a quantile proportion
+    # larger than the desired quantile level. For instance, the 50% percentile: 
+
+    return s.iloc[idx][tptotinc_q>q].iloc[0]
 
 def wmedian(df, column_name, weights_name='wt0'):
     
+    return wquantile(df[column_name], df[weights_name], .5)
+
+def wmedian2(df, column_name, weights_name='wt0'):
+    import weightedstats as ws 
     df = df.dropna(subset=[column_name,weights_name ])
     
     return ws.weighted_median( df[column_name], weights=df[weights_name])
     
-def wmedian2(df, column_name, weights_name='wt0'):
-    
+def wmedian3(df, column_name, weights_name='wt0'):
+    import wquantiles as wq
     df = df.dropna(subset=[column_name,weights_name ])
     
     return wq.median( df[column_name], df[weights_name])
     
-def wmean(df, column_name, weights_name='wt0'):
+def wmean(df, column_name, wname='wt0'):
     """Calculate the weighted mean of a list."""
 
     w = df[weights_name]/df[weights_name].sum()

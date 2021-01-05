@@ -2,7 +2,14 @@ from invoke import task, Collection
 
 from metapack_build.tasks.collection import ns, foreach_metapack_subdir
 
-
+@task
+def index(c):
+    """Print the package url for each sub directory"""
+    
+    for d in foreach_metapack_subdir():
+        c.run('mp index .')
+        
+ns.add_task(index)
 
 # This is an example task for iterating over all of the sub directoryies
 # that have a data package ( directory with metadata.csv ) Th
