@@ -2,6 +2,7 @@ from contextlib import contextmanager
 import matplotlib.pyplot as plt 
 import pandas as pd
 import metapack as mp
+import numpy as np
 
 def remove_version(name):
     import re 
@@ -131,10 +132,10 @@ def make_descriptive_df(df):
     return df
     
     
-    def reldiff(a,b):
-        """Relative difference function"""
+def reldiff(a,b):
+    """Relative difference function"""
 
-        return np.round(np.abs(a-b) / (np.abs(a+b) / 2),3)
+    return np.round(np.abs(a-b) / (np.abs(a+b) / 2),3)
 
 def reladiff(a,b):
     """Relative difference to a"""
