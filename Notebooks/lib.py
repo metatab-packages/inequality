@@ -130,3 +130,43 @@ def make_descriptive_df(df):
    
     return df
     
+    
+    def reldiff(a,b):
+    """Relative difference function"""
+
+    return np.round(np.abs(a-b) / (np.abs(a+b) / 2),3)
+
+def reladiff(a,b):
+    """Relative difference to a"""
+
+    return np.round(np.abs(a-b) / np.abs(a),3)
+
+
+def ratio(a,b):
+    """"Ratio of B to A"""
+    return np.round(b/a,3)
+
+def invratio(a,b):
+    """"Ratio of B to A"""
+    return np.round(a/b,3)
+
+def rms(df):
+    return np.sqrt(np.mean(np.square(df)))
+
+def diffrpt(df):
+    
+    df.index = df.index.astype(str)
+    
+    s1 = ratio(df.white, df.black).to_frame('ratio')
+    s2 = invratio(df.white, df.black).to_frame('ratio_inv')
+    s3 = reladiff(df.white, df.black).to_frame('rel_a')
+    s4 = reldiff(df.white, df.black).to_frame('rel_mean')
+    
+    t =  s1.join(s2).join(s3).join(s4)
+    
+    if len(t) > 0:
+        s = rms(t)
+        s.name = 'rms'
+        return pd.concat([t,s.to_frame().T])
+    else:
+        return t
