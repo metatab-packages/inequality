@@ -78,7 +78,7 @@ def new_plot(title, source=None, figsize=(10,8), xlabel=None, ylabel=None, x_lab
     plt.show()
             
 def make_descriptive_df(df):
-    """Get the inheritance set, remove all races ecept black and white, and munge some values"""
+    """Get the inheritance set, remove all races except black and white, and munge some values"""
 
     df = df[df.race.isin(['white','black'])].copy()
 

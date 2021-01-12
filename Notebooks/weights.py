@@ -41,7 +41,7 @@ def wmedian3(df, column_name, weights_name='wt0'):
 def wmean(df, column_name, wname='wt0'):
     """Calculate the weighted mean of a list."""
 
-    w = df[weights_name]/df[weights_name].sum()
+    w = df[wname]/df[wname].sum()
      
     return (df[column_name]*w).sum()
 
