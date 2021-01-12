@@ -132,9 +132,9 @@ def make_descriptive_df(df):
     
     
     def reldiff(a,b):
-    """Relative difference function"""
+        """Relative difference function"""
 
-    return np.round(np.abs(a-b) / (np.abs(a+b) / 2),3)
+        return np.round(np.abs(a-b) / (np.abs(a+b) / 2),3)
 
 def reladiff(a,b):
     """Relative difference to a"""
